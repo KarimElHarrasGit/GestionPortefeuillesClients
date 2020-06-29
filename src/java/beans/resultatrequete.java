@@ -5,8 +5,8 @@
  */
 package beans;
 
+import model.Customer;
 import java.beans.*;
-import modele.*;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.*;

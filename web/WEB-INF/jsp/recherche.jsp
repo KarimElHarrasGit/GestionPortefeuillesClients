@@ -13,12 +13,12 @@
     </head>
     <body>
         <form name="recherche" action="rechercher.htm" method="POST">
-           <p>
+            <p>
                 <label for="nom">Nom de l'entreprise</label>
                 <input type="text" name="nom"  size="30" id="nom" />
             </p>
             <input type="submit" value="rechercher" name="Operation" />
         </form>
-        
+
     </body>
 </html>

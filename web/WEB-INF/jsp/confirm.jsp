@@ -8,7 +8,7 @@
     <body>
         <h1><%=request.getAttribute("confirm")%> </h1>
         <form action="afficherClients.htm" method="POST">
-        <input type="submit" value="Afficher tous les clients" name="Operation" />
+            <input type="submit" value="Afficher tous les clients" name="Operation" />
         </form>
     </body>
 </html>

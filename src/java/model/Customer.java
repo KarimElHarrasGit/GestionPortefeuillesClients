@@ -1,4 +1,4 @@
-package modele;
+package model;
 // Generated 10 mai 2018 18:03:51 by Hibernate Tools 4.3.1
 
 
@@ -46,7 +46,7 @@ public class Customer  implements java.io.Serializable {
        this.email = email;
        this.creditLimit = creditLimit;
     }
-      public Customer(int customerId, String name,String addressline1, String phone, String email, String discountCode, String zip) {
+      public Customer(String name,String addressline1, String phone, String email, String discountCode, String zip) {
        this.customerId = customerId;
        this.discountCode = discountCode.charAt(0);
        this.zip = zip;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modele;
+package model;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
@@ -91,7 +91,7 @@ public class MagasinHelper {
         return resultat;
     }
 
-    public void insertCustomer(int _customerId, String _name, String _adress, String _phone, String _email, String _discountCode, String _zip) {
+    public void insertCustomer(String _name, String _adress, String _phone, String _email, String _discountCode, String _zip) {
 
         Transaction tx = null;
         try {
@@ -101,7 +101,7 @@ public class MagasinHelper {
             session.flush();
 
             tx = session.beginTransaction();
-            Customer a = new Customer(_customerId, _name, _adress, _phone, _email, _discountCode, _zip);
+            Customer a = new Customer(_name, _adress, _phone, _email, _discountCode, _zip);
             session.save(a);
             tx.commit();
         } catch (Exception e) {
@@ -201,7 +201,7 @@ public class MagasinHelper {
     }
 
     public List getAchats(int id) {
-        List resultat = null;
+        List<Object[]> resultat = null;
         Transaction tx = null;
         try {
             if (!session.isOpen()) {
@@ -213,6 +213,11 @@ public class MagasinHelper {
             Query q = session.createQuery(" from PurchaseOrder as achats join achats.customer a where a.customerId=:_id");
             q.setInteger("_id", id);
             resultat = q.list();
+            for (Object[] arr : resultat) {
+                Query subquery = session.createQuery(" from Product p where p.productId =:_id");
+                subquery.setInteger("_id", ((PurchaseOrder) arr[0]).getProductId());
+                arr[1] = subquery.list().iterator().next();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

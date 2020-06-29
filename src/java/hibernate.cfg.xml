@@ -11,13 +11,13 @@
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <property name="hibernate.transaction.auto_close_session">true</property>
-    <mapping resource="modele/Product.hbm.xml"/>
-    <mapping resource="modele/MicroMarket.hbm.xml"/>
-    <mapping resource="modele/Customer.hbm.xml"/>
-    <mapping resource="modele/Manufacturer.hbm.xml"/>
-    <mapping resource="modele/DiscountCode.hbm.xml"/>
-    <mapping resource="modele/PurchaseOrder.hbm.xml"/>
-    <mapping resource="modele/ProductCode.hbm.xml"/>
-    <mapping resource="modele/hibernate.hbm.xml"/>
+    <mapping resource="model/Product.hbm.xml"/>
+    <mapping resource="model/MicroMarket.hbm.xml"/>
+    <mapping resource="model/Customer.hbm.xml"/>
+    <mapping resource="model/Manufacturer.hbm.xml"/>
+    <mapping resource="model/DiscountCode.hbm.xml"/>
+    <mapping resource="model/PurchaseOrder.hbm.xml"/>
+    <mapping resource="model/ProductCode.hbm.xml"/>
+    <mapping resource="model/hibernate.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

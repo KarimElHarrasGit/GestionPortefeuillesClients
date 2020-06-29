@@ -9,7 +9,7 @@ import beans.resultatrequete;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modele.MagasinHelper;
+import model.MagasinHelper;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -86,7 +86,7 @@ public class Controlleur extends MultiActionController {
             String param4 = request.getParameter("email");
             String param5 = request.getParameter("code_remise");
             String param6 = request.getParameter("CP");
-            requeteur.insertCustomer(356, param1, param2, param3, param4, param5, param6);
+            requeteur.insertCustomer(param1, param2, param3, param4, param5, param6);
             return new ModelAndView("confirm").addObject("confirm", "Enregistrement effectué");
         } catch (Exception e) {
             request.setAttribute("erreur", "erreur requete " + e);

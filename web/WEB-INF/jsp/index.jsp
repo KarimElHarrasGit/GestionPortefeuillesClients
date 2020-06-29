@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
     </head>
     <body>
         <%-- jsp servant de point d'entrée à l'application et redirigeant directement vers le servlet controleur--%>
