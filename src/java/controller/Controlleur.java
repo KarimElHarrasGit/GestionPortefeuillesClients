@@ -143,6 +143,13 @@ public class Controlleur extends MultiActionController {
         }
         return null;
     }
+    
+    public ModelAndView home(HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+
+        return new ModelAndView("home");
+        
+    }
 
 //    public ModelAndView rechercher(HttpServletRequest request,
 //			HttpServletResponse response) throws Exception {

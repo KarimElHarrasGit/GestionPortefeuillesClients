@@ -29,12 +29,11 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
 
-    <!--
-    The index controller.
-    -->
+    
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="menu" />
+          p:viewName="home" />
+    
     <bean name="principalController" class="controller.Controlleur" />
 
 </beans>

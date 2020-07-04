@@ -1,20 +1,23 @@
+<%-- 
+    Document   : menu
+    Created on : 4 juil. 2020, 14:21:02
+    Author     : kelharra
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu</title>
+        <title>JSP Page</title>
+        <style><%@include file="/WEB-INF/css/styles.css"%></style>
     </head>
     <body>
-        <h1>choisissez une opération dans la liste suivante</h1>
-        <form name="afficher" action="afficherClients.htm" method="POST">
-            <p> <input type="submit" value="Afficher tous les clients"  /></p>
-        </form>
-        <form name="inserer" action="afficherFormInscriptionClient.htm" method="POST">
-            <p> <input type="submit" value="Inserer un client"  /></p>
-        </form>
-        <form name="rechercher" action="rechercher.htm" method="POST">
-            <p> <input type="submit" value="rechercher un enregistrement"  /></p>
-        </form>
+        <div class="navbar">
+            <a href="home.htm">Accueil</a>
+            <a href="afficherClients.htm">Afficher tous les clients</a>
+            <a href="afficherFormInscriptionClient.htm">Inserer un client</a>
+            <a href="rechercher.htm">rechercher un enregistrement</a>
+        </div>
     </body>
 </html>

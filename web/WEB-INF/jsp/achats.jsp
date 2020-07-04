@@ -6,6 +6,7 @@
         <title>Achats</title>
     </head>
     <body>
+        <%@ include file="menu.jsp" %>
         <%@page import="java.util.*" %>
         <%@page import="model.*" %>
         <jsp:useBean id="resultat" class="beans.resultatrequete" scope="request" />

@@ -4,8 +4,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Enregistrement</title>
+        <style><%@include file="/WEB-INF/css/styles.css"%></style>
     </head>
     <body>
+        <%@ include file="menu.jsp" %>
         <%@page import="java.util.*" %>
         <%@page import="model.*" %>
         <jsp:useBean id="cp" class="beans.resultatrequete" scope="request" />
@@ -13,19 +15,19 @@
         <form name="inscription" action="enregistrerClient.htm" method="POST">
             <p>
                 <label for="nom">Nom</label>
-                <input type="text" name="nom" value="" size="10" id="nom" />
+                <input type="text" name="nom" value="" size="30" id="nom" />
             </p>
             <p>
                 <label for="adresse">Adresse</label>
-                <input type="text" name="adresse" value="" size="10" id="adresse" />
+                <input type="text" name="adresse" value="" size="30" id="adresse" />
             </p>
             <p>
                 <label for="telephone">Téléphone</label>
-                <input type="text" name="telephone" value="" size="10" id="tel" />
+                <input type="text" name="telephone" value="" size="30" id="tel" />
             </p>
             <p>
                 <label for="email">E-mail</label>
-                <input type="text" name="email" value="" size="10" id="email"/>
+                <input type="text" name="email" value="" size="30" id="email"/>
             </p>
             <p><label for="code_remise">Code Remise</label>
                 <select name="code_remise" id="dc" >

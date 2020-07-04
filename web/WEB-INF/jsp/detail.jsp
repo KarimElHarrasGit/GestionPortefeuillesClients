@@ -7,6 +7,7 @@
         <style><%@include file="/WEB-INF/css/styles.css"%></style>
     </head>
     <body>
+        <%@ include file="menu.jsp" %>
         <jsp:useBean id="resultat" class="beans.resultatrequete" scope="request" />
         <jsp:useBean id="dc" class="beans.resultatrequete" scope="request" />
         <jsp:useBean id="zip" class="beans.resultatrequete" scope="request" />
