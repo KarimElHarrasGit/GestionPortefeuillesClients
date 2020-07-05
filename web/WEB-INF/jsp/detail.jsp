@@ -36,7 +36,7 @@
                 <input type="text" name="email" value="<%=resultat.getClient().getEmail()%>" size="30" id="email"/>
             </p>
             <p>
-                <label for="Remise">Remise</label>
+                <label for="Remise">Code Remise</label>
                 <select name="Remise" id="dc" >
                     <% List<Character> res = dc.getResult();
                         for (Character enreg1 : res) {

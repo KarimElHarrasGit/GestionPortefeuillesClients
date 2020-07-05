@@ -7,8 +7,10 @@ package controller;
 
 import beans.resultatrequete;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Customer;
 import model.MagasinHelper;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
@@ -30,9 +32,8 @@ public class Controlleur extends MultiActionController {
             a.setResult(requeteur.getClients());
             return new ModelAndView("resultat").addObject("resultat", a);
         } catch (SQLException e) {
-            e.printStackTrace();
+            return new ModelAndView("error").addObject("erreur", "Erreur : " + e);
         }
-        return null;
     }
 
     public ModelAndView detailClient(HttpServletRequest request,
@@ -40,7 +41,7 @@ public class Controlleur extends MultiActionController {
         try {
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
-            a.setClient(requeteur.getClient(Integer.parseInt(request.getParameter("Operation"))));
+            a.setClient(requeteur.getClientById(Integer.parseInt(request.getParameter("Operation"))));
             resultatrequete b = new resultatrequete();
             b.setResult(requeteur.getDiscountCode());
             resultatrequete c = new resultatrequete();
@@ -51,10 +52,8 @@ public class Controlleur extends MultiActionController {
             mv.addObject("zip", c);
             return mv;
         } catch (Exception e) {
-            request.setAttribute("erreur", "erreur requete " + e);
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            return new ModelAndView("error").addObject("erreur", "Erreur : " + e);
         }
-        return null;
     }
 
     public ModelAndView afficherFormInscriptionClient(HttpServletRequest request,
@@ -70,10 +69,10 @@ public class Controlleur extends MultiActionController {
             mv.addObject("cp", b);
             return mv;
         } catch (SQLException e) {
-            request.setAttribute("erreur", "erreur requete " + e);
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            return new ModelAndView("error").addObject("erreur", "Erreur : " + e);
+
         }
-        return null;
+
     }
 
     public ModelAndView enregistrerClient(HttpServletRequest request,
@@ -89,10 +88,10 @@ public class Controlleur extends MultiActionController {
             requeteur.insertCustomer(param1, param2, param3, param4, param5, param6);
             return new ModelAndView("confirm").addObject("confirm", "Enregistrement effectué");
         } catch (Exception e) {
-            request.setAttribute("erreur", "erreur requete " + e);
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            return new ModelAndView("error").addObject("erreur", "Erreur : " + e);
+
         }
-        return null;
+
     }
 
     public ModelAndView modifierClient(HttpServletRequest request,
@@ -109,10 +108,10 @@ public class Controlleur extends MultiActionController {
             requeteur.updateCustomer(Integer.parseInt(param1), param2, param3, param4, param5, param6, param7);
             return new ModelAndView("confirm").addObject("confirm", "Modification effectuée");  //message de confirmation de modification envoyé à la jsp           
         } catch (Exception e) {
-            request.setAttribute("erreur", "erreur requete " + e);
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            return new ModelAndView("error").addObject("erreur", "Erreur : " + e);
+
         }
-        return null;
+
     }
 
     public ModelAndView supprimerClient(HttpServletRequest request,
@@ -123,10 +122,10 @@ public class Controlleur extends MultiActionController {
             requeteur.deleteCustomer(Integer.parseInt(param1));
             return new ModelAndView("confirm").addObject("confirm", "Suppression effectuée");  //message de confirmation de suppression envoyé à la jsp           
         } catch (Exception e) {
-            request.setAttribute("erreur", "erreur requete " + e);
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            return new ModelAndView("error").addObject("erreur", "Erreur : " + e);
+
         }
-        return null;
+
     }
 
     public ModelAndView afficherAchats(HttpServletRequest request,
@@ -138,23 +137,80 @@ public class Controlleur extends MultiActionController {
             request.setAttribute("resultat", a);//déclaration de mon javabean dans mes paramètres POST
             return new ModelAndView("achats").addObject("resultat", a);
         } catch (Exception e) {
-            request.setAttribute("erreur", "erreur requete " + e);
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            return new ModelAndView("error").addObject("erreur", "Erreur : " + e);
+
         }
-        return null;
+
     }
-    
+
     public ModelAndView home(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
         return new ModelAndView("home");
-        
+
     }
 
-//    public ModelAndView rechercher(HttpServletRequest request,
-//			HttpServletResponse response) throws Exception {
-//		
-//		return new ModelAndView("affichage").addObject("tableau", liste);
-//	}
-//    
+    public ModelAndView afficherFormRechercheClient(HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+
+        return new ModelAndView("recherche");
+    }
+
+    public ModelAndView rechercher(HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+
+        try {
+            String identifiant_client = request.getParameter("identifiant_client");
+            String nom_client = request.getParameter("nom_client");
+            if (!identifiant_client.isEmpty()) {
+                requeteur = new MagasinHelper();
+                Customer client = requeteur.getClientById(Integer.parseInt(identifiant_client));
+                if (client != null) {
+                    resultatrequete a = new resultatrequete();
+                    a.setClient(client);
+                    resultatrequete b = new resultatrequete();
+                    b.setResult(requeteur.getDiscountCode());
+                    resultatrequete c = new resultatrequete();
+                    c.setResult(requeteur.getMicroMarket());
+                    ModelAndView mv = new ModelAndView("detail");
+                    mv.addObject("resultat", a);
+                    mv.addObject("dc", b);
+                    mv.addObject("zip", c);
+                    return mv;
+                } else {
+                    return new ModelAndView("error").addObject("erreur", "Aucun client trouvé avec l'identifiant " + identifiant_client);
+                }
+            } else if (identifiant_client.isEmpty() && !nom_client.isEmpty()) {
+                requeteur = new MagasinHelper();
+                List clients = requeteur.getClientByName(nom_client);
+
+                if (clients.size() == 1) {
+                    resultatrequete a = new resultatrequete();
+                    a.setClient(clients.get(0));
+                    resultatrequete b = new resultatrequete();
+                    b.setResult(requeteur.getDiscountCode());
+                    resultatrequete c = new resultatrequete();
+                    c.setResult(requeteur.getMicroMarket());
+                    ModelAndView mv = new ModelAndView("detail");
+                    mv.addObject("resultat", a);
+                    mv.addObject("dc", b);
+                    mv.addObject("zip", c);
+                    return mv;
+                } else if (clients.size() > 1) {
+                    resultatrequete a = new resultatrequete();
+                    a.setResult(clients);
+                    return new ModelAndView("resultat").addObject("resultat", a);
+                } else {
+                    return new ModelAndView("error").addObject("erreur", "Aucun client trouvé avec le nom " + nom_client);
+                }
+            } else {
+                return new ModelAndView("recherche");
+            }
+        } catch (Exception e) {
+            return new ModelAndView("error").addObject("erreur", "Erreur : " + e);
+
+        }
+
+    }
+
 }

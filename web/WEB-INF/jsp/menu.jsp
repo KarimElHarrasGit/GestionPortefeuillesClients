@@ -9,7 +9,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
         <style><%@include file="/WEB-INF/css/styles.css"%></style>
     </head>
     <body>
@@ -17,7 +16,7 @@
             <a href="home.htm">Accueil</a>
             <a href="afficherClients.htm">Afficher tous les clients</a>
             <a href="afficherFormInscriptionClient.htm">Inserer un client</a>
-            <a href="rechercher.htm">rechercher un enregistrement</a>
+            <a href="afficherFormRechercheClient.htm">Rechercher un client</a>
         </div>
     </body>
 </html>

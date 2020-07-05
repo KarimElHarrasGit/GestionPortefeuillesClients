@@ -149,7 +149,7 @@ public class MagasinHelper {
 
     }
 
-    public Customer getClient(int id) {
+    public Customer getClientById(int id) {
 
         Customer client = null;
         Transaction tx = null;
@@ -163,7 +163,7 @@ public class MagasinHelper {
             q.setInteger("_id", id);
             client = (Customer) q.list().iterator().next();
         } catch (Exception e) {
-            System.out.println("erreur toto" + e);
+            System.out.println("erreur " + e);
             e.printStackTrace();
         } finally {
             if (session.isOpen()) {
@@ -172,6 +172,31 @@ public class MagasinHelper {
         }
 
         return client;
+    }
+
+    public List getClientByName(String name) {
+
+        List resultat = null;
+        Transaction tx = null;
+        try {
+            if (!session.isOpen()) {
+                session = HibernateUtil.getSessionFactory().openSession();
+            }
+            session.flush();
+            tx = session.beginTransaction();
+            Query q = session.createQuery(" from Customer a  where a.name =:_name");
+            q.setString("_name", name);
+            resultat = q.list();
+        } catch (Exception e) {
+            System.out.println("erreur " + e);
+            e.printStackTrace();
+        } finally {
+            if (session.isOpen()) {
+                session.close();
+            }
+        }
+
+        return resultat;
     }
 
     public void deleteCustomer(int _id) {

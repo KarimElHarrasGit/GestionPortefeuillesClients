@@ -8,13 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login Error</title>
+        <title>Authentification échouée</title>
     </head>
     <body>
-    <c:url var="url" value="/index.jsp"/>
-    <h2>Invalid user name or password.</h2>
+        <%@ include file="menu.jsp" %>
+        <h2>Nom d'utilisateur ou Mot de passe invalide.</h2>
 
-    <p>Please enter a user name or password that is authorized to access this 
-        application.</p>
-</body>
+    </body>
 </html>

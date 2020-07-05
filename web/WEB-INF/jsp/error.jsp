@@ -6,6 +6,7 @@
         <title>Erreur</title>
     </head>
     <body>
+        <%@ include file="menu.jsp" %>
         <h1><%=request.getAttribute("erreur")%> </h1>
     </body>
 </html>

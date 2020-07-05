@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu</title>
+        <title>Accueil</title>
     </head>
     <body>
         <%@ include file="menu.jsp" %>
