@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 mai 2018 18:03:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="model.Customer" optimistic-lock="version" schema="APP" table="CUSTOMER">
+    <id name="customerId" type="int">
+      <column name="CUSTOMER_ID"/>
+      <generator class="increment" />
+    </id>
+    <property name="discountCode" type="char">
+      <column length="1" name="DISCOUNT_CODE" not-null="true"/>
+    </property>
+    <!--<many-to-one name="discountCode" class="modele.DiscountCode">
+            <column name="DISCOUNT_CODE" length="1" not-null="true" lazy="true" />
+        </many-to-one>-->
+    <property name="zip" type="string">
+      <column length="10" name="ZIP" not-null="true"/>
+    </property>
+    <property name="name" type="string">
+      <column length="30" name="NAME"/>
+    </property>
+    <property name="addressline1" type="string">
+      <column length="30" name="ADDRESSLINE1"/>
+    </property>
+    <property name="addressline2" type="string">
+      <column length="30" name="ADDRESSLINE2"/>
+    </property>
+    <property name="city" type="string">
+      <column length="25" name="CITY"/>
+    </property>
+    <property name="state" type="string">
+      <column length="2" name="STATE"/>
+    </property>
+    <property name="phone" type="string">
+      <column length="12" name="PHONE"/>
+    </property>
+    <property name="fax" type="string">
+      <column length="12" name="FAX"/>
+    </property>
+    <property name="email" type="string">
+      <column length="40" name="EMAIL"/>
+    </property>
+    <property name="creditLimit" type="java.lang.Integer">
+      <column name="CREDIT_LIMIT"/>
+    </property>
+  </class>
+</hibernate-mapping>
