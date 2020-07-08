@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package utils;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import java.util.*;
 import java.sql.*;
+import model.Customer;
+import model.PurchaseOrder;
 
 /**
  *

@@ -8,9 +8,9 @@
     </head>
     <body>
         <%@ include file="menu.jsp" %>
-        <jsp:useBean id="resultat" class="beans.resultatrequete" scope="request" />
-        <jsp:useBean id="dc" class="beans.resultatrequete" scope="request" />
-        <jsp:useBean id="zip" class="beans.resultatrequete" scope="request" />
+        <jsp:useBean id="resultat" class="utils.resultatrequete" scope="request" />
+        <jsp:useBean id="dc" class="utils.resultatrequete" scope="request" />
+        <jsp:useBean id="zip" class="utils.resultatrequete" scope="request" />
         <%@page import="model.*" %>
         <%@page import="java.util.*" %>
 

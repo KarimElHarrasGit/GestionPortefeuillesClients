@@ -10,8 +10,8 @@
         <%@ include file="menu.jsp" %>
         <%@page import="java.util.*" %>
         <%@page import="model.*" %>
-        <jsp:useBean id="cp" class="beans.resultatrequete" scope="request" />
-        <jsp:useBean id="dc" class="beans.resultatrequete" scope="request" />
+        <jsp:useBean id="cp" class="utils.resultatrequete" scope="request" />
+        <jsp:useBean id="dc" class="utils.resultatrequete" scope="request" />
         <form name="inscription" action="enregistrerClient.htm" method="POST">
             <p>
                 <label for="nom">Nom</label>

@@ -9,7 +9,7 @@
         <%@ include file="menu.jsp" %>
         <%@page import="java.util.*" %>
         <%@page import="model.*" %>
-        <jsp:useBean id="resultat" class="beans.resultatrequete" scope="request" />
+        <jsp:useBean id="resultat" class="utils.resultatrequete" scope="request" />
         <br />
         <form name="Result" action="detailClient.htm" method="POST">
 

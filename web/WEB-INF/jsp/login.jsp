@@ -19,7 +19,7 @@
         <p><strong>Mot de passe : </strong>
             <input type="password" size="15" name="j_password">
         </p>
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
+        <input type="submit" value="Soumettre">
+        <input type="reset" value="Réinitialiser">
     </form>
 </html>
