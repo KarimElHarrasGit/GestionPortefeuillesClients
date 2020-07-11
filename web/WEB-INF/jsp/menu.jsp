@@ -17,6 +17,14 @@
             <a href="afficherClients.htm">Afficher tous les clients</a>
             <a href="afficherFormInscriptionClient.htm">Inserer un client</a>
             <a href="afficherFormRechercheClient.htm">Rechercher un client</a>
+            <a href="disconnect.htm">Se deconnecter</a>
+            <p class="user"><%
+                if(null == session.getAttribute("myattribute"))
+                {
+                session.setAttribute("name", request.getUserPrincipal().toString());
+                }
+                out.print("Bonjour "+session.getAttribute("name"));
+                %></p>
         </div>
     </body>
 </html>

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Customer;
 import utils.MagasinHelper;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,6 +28,14 @@ public class Controlleur extends MultiActionController {
     public ModelAndView afficherClients(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+            
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
             a.setResult(requeteur.getClients());
@@ -39,6 +48,14 @@ public class Controlleur extends MultiActionController {
     public ModelAndView detailClient(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+            
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
             a.setClient(requeteur.getClientById(Integer.parseInt(request.getParameter("Operation"))));
@@ -59,6 +76,14 @@ public class Controlleur extends MultiActionController {
     public ModelAndView afficherFormInscriptionClient(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+            
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
             resultatrequete b = new resultatrequete();
@@ -78,6 +103,14 @@ public class Controlleur extends MultiActionController {
     public ModelAndView enregistrerClient(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+            
             requeteur = new MagasinHelper();
             String param1 = request.getParameter("nom");
             String param2 = request.getParameter("adresse");
@@ -97,6 +130,14 @@ public class Controlleur extends MultiActionController {
     public ModelAndView modifierClient(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+            
             requeteur = new MagasinHelper();
             String param1 = request.getParameter("numero");
             String param2 = request.getParameter("nom");
@@ -117,6 +158,14 @@ public class Controlleur extends MultiActionController {
     public ModelAndView supprimerClient(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+            
             requeteur = new MagasinHelper();
             String param1 = request.getParameter("numero");
             requeteur.deleteCustomer(Integer.parseInt(param1));
@@ -131,6 +180,14 @@ public class Controlleur extends MultiActionController {
     public ModelAndView afficherAchats(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+            
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
             a.setResult(requeteur.getAchats(Integer.parseInt(request.getParameter("numero"))));
@@ -145,14 +202,41 @@ public class Controlleur extends MultiActionController {
 
     public ModelAndView home(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
+        
+        HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
 
         return new ModelAndView("home");
+
+    }
+    
+    public ModelAndView disconnect(HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        
+         HttpSession session=request.getSession(false);
+        if(session!=null)
+         {
+          session.invalidate();
+         }
+
+        return new ModelAndView("login");
 
     }
 
     public ModelAndView afficherFormRechercheClient(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
+        
+        HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+        
         return new ModelAndView("recherche");
     }
 
@@ -160,6 +244,14 @@ public class Controlleur extends MultiActionController {
             HttpServletResponse response) throws Exception {
 
         try {
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+    // Not created yet. Now do so yourself.
+             session = request.getSession();
+             session.setAttribute("name", request.getUserPrincipal().toString());
+            }
+            
             String identifiant_client = request.getParameter("identifiant_client");
             String nom_client = request.getParameter("nom_client");
             if (!identifiant_client.isEmpty()) {
