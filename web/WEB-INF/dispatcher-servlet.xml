@@ -18,7 +18,6 @@
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="index.htm">indexController</prop>
                 <prop key="*.htm">principalController</prop>
             </props>
         </property>
@@ -29,10 +28,6 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
 
-    
-    <bean name="indexController"
-          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="home" />
     
     <bean name="principalController" class="controller.Controlleur" />
 

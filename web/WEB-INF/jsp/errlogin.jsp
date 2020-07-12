@@ -11,8 +11,6 @@
         <title>Authentification échouée</title>
     </head>
     <body>
-        <%@ include file="menu.jsp" %>
         <h2>Nom d'utilisateur ou Mot de passe invalide.</h2>
-
     </body>
 </html>

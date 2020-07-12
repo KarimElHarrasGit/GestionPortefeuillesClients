@@ -15,8 +15,12 @@
         <div class="navbar">
             <a href="home.htm">Accueil</a>
             <a href="afficherClients.htm">Afficher tous les clients</a>
-            <a href="afficherFormInscriptionClient.htm">Inserer un client</a>
+            <a href="afficherFormInscriptionClient.htm">Insérer un client</a>
             <a href="afficherFormRechercheClient.htm">Rechercher un client</a>
+            <a href="disconnect.htm">Se déconnecter</a>
+            <div class="user"><%
+                out.print("Utilisateur : " + session.getAttribute("nameCurrentUser"));
+                %></div>
         </div>
     </body>
 </html>

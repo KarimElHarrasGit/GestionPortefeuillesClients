@@ -21,7 +21,7 @@ label
     background-color: #333;
 }
 
-.navbar a {
+.navbar a , .user {
     float: left;
     font-size: 16px;
     color: white;
@@ -32,4 +32,9 @@ label
 
 .navbar a:hover {
     background-color: lightslategrey;
+}
+
+.user
+{
+    float: right;
 }
