@@ -22,19 +22,29 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
  */
 public class Controlleur extends MultiActionController {
 
+    
+    
     MagasinHelper requeteur;
     String erreur;
+    
+        
+    
+   private void setSession(HttpServletRequest request) throws Exception
+   {
+            
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+             session = request.getSession();
+             session.setAttribute("name",request.getUserPrincipal().toString());
+            }
+   }
 
     public ModelAndView afficherClients(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
             
-            HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+            setSession(request);
             
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
@@ -49,12 +59,7 @@ public class Controlleur extends MultiActionController {
             HttpServletResponse response) throws Exception {
         try {
             
-            HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+           setSession(request);
             
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
@@ -77,12 +82,7 @@ public class Controlleur extends MultiActionController {
             HttpServletResponse response) throws Exception {
         try {
             
-            HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+           setSession(request);
             
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
@@ -104,12 +104,7 @@ public class Controlleur extends MultiActionController {
             HttpServletResponse response) throws Exception {
         try {
             
-            HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+           setSession(request);
             
             requeteur = new MagasinHelper();
             String param1 = request.getParameter("nom");
@@ -131,13 +126,8 @@ public class Controlleur extends MultiActionController {
             HttpServletResponse response) throws Exception {
         try {
             
-            HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
-            
+           setSession(request);
+           
             requeteur = new MagasinHelper();
             String param1 = request.getParameter("numero");
             String param2 = request.getParameter("nom");
@@ -159,12 +149,7 @@ public class Controlleur extends MultiActionController {
             HttpServletResponse response) throws Exception {
         try {
             
-            HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+            setSession(request);
             
             requeteur = new MagasinHelper();
             String param1 = request.getParameter("numero");
@@ -181,12 +166,7 @@ public class Controlleur extends MultiActionController {
             HttpServletResponse response) throws Exception {
         try {
             
-            HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+          setSession(request);
             
             requeteur = new MagasinHelper();
             resultatrequete a = new resultatrequete();
@@ -203,12 +183,7 @@ public class Controlleur extends MultiActionController {
     public ModelAndView home(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
-        HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+        setSession(request);
 
         return new ModelAndView("home");
 
@@ -230,12 +205,7 @@ public class Controlleur extends MultiActionController {
     public ModelAndView afficherFormRechercheClient(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
-        HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+       setSession(request);
         
         return new ModelAndView("recherche");
     }
@@ -245,12 +215,7 @@ public class Controlleur extends MultiActionController {
 
         try {
             
-            HttpSession session = request.getSession(false);
-            if (session == null) {
-    // Not created yet. Now do so yourself.
-             session = request.getSession();
-             session.setAttribute("name", request.getUserPrincipal().toString());
-            }
+            setSession(request);
             
             String identifiant_client = request.getParameter("identifiant_client");
             String nom_client = request.getParameter("nom_client");

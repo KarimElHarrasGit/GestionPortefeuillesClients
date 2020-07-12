@@ -19,7 +19,7 @@
             <a href="afficherFormRechercheClient.htm">Rechercher un client</a>
             <a href="disconnect.htm">Se deconnecter</a>
             <p class="user"><%
-                if(null == session.getAttribute("myattribute"))
+                if(null == session.getAttribute("name"))
                 {
                 session.setAttribute("name", request.getUserPrincipal().toString());
                 }
