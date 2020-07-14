@@ -22,8 +22,23 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
  */
 public class Controlleur extends MultiActionController {
 
+    
+    
     MagasinHelper requeteur;
     String erreur;
+    
+        
+    
+   private void setSession(HttpServletRequest request) throws Exception
+   {
+            
+            
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+             session = request.getSession();
+             session.setAttribute("name",request.getUserPrincipal().toString());
+            }
+   }
 
     public ModelAndView afficherClients(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
@@ -174,6 +189,8 @@ public class Controlleur extends MultiActionController {
 
     public ModelAndView home(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
+        
+        setSession(request);
 
         HttpSession session = request.getSession(false);
         if (session.getAttribute("nameCurrentUser") == null) {

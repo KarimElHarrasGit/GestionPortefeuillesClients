@@ -16,9 +16,19 @@ label
 
 }
 
+/*table {
+  margin-left: 650px;
+  text-align: center;
+}*/
+/*.lol class="lol"
+{
+    margin-left: 650px;
+}*/
+
 .navbar {
     overflow: hidden;
     background-color: #333;
+   
 }
 
 .navbar a , .user {

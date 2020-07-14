@@ -9,15 +9,14 @@
 <html>
     <head>
         <title>Authentification</title>
-        <style><%@include file="/WEB-INF/css/styles.css"%></style>
     </head>
 
     
     <form action="j_security_check" method=post>
-        <p><label>Nom d'utilisateur </label>
+        <p><strong>Nom d'utilisateur : </strong>
             <input type="text" name="j_username" size="25">
         </p>
-        <p><label>Mot de passe </label>
+        <p><strong>Mot de passe : </strong>
             <input type="password" size="15" name="j_password">
         </p>
         <input type="submit" value="Soumettre">
